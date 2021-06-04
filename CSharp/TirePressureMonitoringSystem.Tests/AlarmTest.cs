@@ -11,32 +11,6 @@ namespace TDDMicroExercises.TirePressureMonitoringSystem
             Assert.False(alarm.AlarmOn);
         }
 
-        [Fact]
-        public void Check_Alarm_On_below_threshold()
-        {
-            TestAlarm alarm = new TestAlarm(15.8);
-            alarm.Check();
-
-            Assert.True(alarm.AlarmOn);
-        }
-
-        [Fact]
-        public void Check_Alarm_Off_pressure_into_range()
-        {
-            TestAlarm alarm = new TestAlarm(20.7);
-            alarm.Check();
-
-            Assert.False(alarm.AlarmOn);
-        }
-
-        [Fact]
-        public void Check_Alarm_On_above_threshold()
-        {
-            TestAlarm alarm = new TestAlarm(21.1);
-            alarm.Check();
-
-            Assert.True(alarm.AlarmOn);
-        }
 
         [Fact]
         public void Check_Alarm_Off_pressure_into_range_with_controlled_sensor()
@@ -86,19 +60,5 @@ namespace TDDMicroExercises.TirePressureMonitoringSystem
         {
             return this.fixedPressure;
         }
-    }
-
-    public class TestAlarm : Alarm
-    {
-        private double _fixedPressure;
-
-        public TestAlarm(double fixedPressure)
-        {
-            this._fixedPressure = fixedPressure;
-        }
-        protected override double GetPressure()
-        {
-            return _fixedPressure;
-        }      
     }
 }
