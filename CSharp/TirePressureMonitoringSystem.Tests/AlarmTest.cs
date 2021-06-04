@@ -37,6 +37,33 @@ namespace TDDMicroExercises.TirePressureMonitoringSystem
 
             Assert.True(alarm.AlarmOn);
         }
+
+        [Fact]
+        public void Check_Alarm_On_above_threshold_with_controlled_sensor()
+        {
+            const double fixedPressure = 21.1d;
+            ISensor testableSensor = new TestableSensor(fixedPressure);
+
+            Alarm alarm = new Alarm(testableSensor);
+            alarm.Check();
+
+            Assert.True(alarm.AlarmOn);
+        }
+    }
+
+    internal class TestableSensor : ISensor
+    {
+        private double fixedPressure;
+
+        public TestableSensor(double fixedPressure)
+        {
+            this.fixedPressure = fixedPressure;
+        }
+
+        public double PopNextPressurePsiValue()
+        {
+            return this.fixedPressure;
+        }
     }
 
     public class TestAlarm : Alarm
