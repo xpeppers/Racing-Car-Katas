@@ -4,34 +4,16 @@ namespace TDDMicroExercises.TirePressureMonitoringSystem
 {
 	public class AlarmTest
 	{
-
-		[Fact]
-		public void TestAlarmOnSensorValue0()
+		[Theory]
+		[InlineData(0, true)]
+		[InlineData(17, false)]
+		[InlineData(18, false)]
+		public void TestAlarm(double value, bool expected)
 		{
-			SensorStub st = new SensorStub(0);
-
+			SensorStub st = new SensorStub(value);
 			Alarm alarm = new Alarm(st);
 			alarm.Check();
-			Assert.True(alarm.AlarmOn);
-		}
-
-		[Fact]
-		public void TestAlarmOnSensorValue17()
-		{
-			SensorStub st = new SensorStub(17);
-
-			Alarm alarm = new Alarm(st);
-			alarm.Check();
-			Assert.False(alarm.AlarmOn);
-		}
-
-		[Fact]
-		public void TestAlarmOnSensorValue18()
-		{
-			SensorStub st = new SensorStub(18);
-			Alarm alarm = new Alarm(st);
-			alarm.Check();
-			Assert.False(alarm.AlarmOn);
+			Assert.Equal(expected, alarm.AlarmOn);
 		}
 	}
 
