@@ -5,13 +5,14 @@ namespace TDDMicroExercises.TirePressureMonitoringSystem
         private const double LowPressureThreshold = 17;
         private const double HighPressureThreshold = 21;
 
-        ISensor _sensor = new Sensor();
+        ISensor _sensor;
 
         bool _alarmOn = false;
         private long _alarmCount = 0;
 
         public Alarm()
         {
+            this._sensor = new Sensor();
         }
 
         public Alarm(ISensor sensor)
