@@ -10,6 +10,7 @@ namespace TDDMicroExercises.TirePressureMonitoringSystem
         bool _alarmOn = false;
         private long _alarmCount = 0;
 
+        [System.Obsolete]
         public Alarm()
         {
             this._sensor = new Sensor();

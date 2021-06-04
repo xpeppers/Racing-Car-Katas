@@ -5,6 +5,7 @@ namespace TDDMicroExercises.TirePressureMonitoringSystem
     public class AlarmTest
     {
         [Fact]
+        [System.Obsolete]
         public void Alarm_Start_Off()
         {
             Alarm alarm = new Alarm();
