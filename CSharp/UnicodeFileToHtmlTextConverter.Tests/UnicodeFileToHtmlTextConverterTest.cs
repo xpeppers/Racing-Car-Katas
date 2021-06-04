@@ -1,5 +1,6 @@
 
 using System;
+using System.IO;
 using Xunit;
 namespace TDDMicroExercises.UnicodeFileToHtmlTextConverter
 {
@@ -10,6 +11,18 @@ namespace TDDMicroExercises.UnicodeFileToHtmlTextConverter
         {
             UnicodeFileToHtmlTextConverter converter = new UnicodeFileToHtmlTextConverter(string.Empty);
             Assert.Throws< ArgumentException>(() => converter.ConvertToHtml());
+        }
+
+        [Fact]
+        public void Check_Reading_File()
+        {
+            string path = "D:\\Temp\\TestFile.txt";
+            File.WriteAllText(path, "Ciao siamo i solidiBolidi");
+
+            UnicodeFileToHtmlTextConverter converter = new UnicodeFileToHtmlTextConverter(path);
+            string html = converter.ConvertToHtml();
+
+            Assert.Equal("Ciao siamo i solidiBolidi<br />", html);
         }
     }
 }
