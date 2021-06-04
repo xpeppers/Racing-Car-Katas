@@ -28,6 +28,15 @@ namespace TDDMicroExercises.TirePressureMonitoringSystem
 
             Assert.False(alarm.AlarmOn);
         }
+
+        [Fact]
+        public void Check_Alarm_On_above_threshold()
+        {
+            TestAlarm alarm = new TestAlarm(21.1);
+            alarm.Check();
+
+            Assert.True(alarm.AlarmOn);
+        }
     }
 
     public class TestAlarm : Alarm
