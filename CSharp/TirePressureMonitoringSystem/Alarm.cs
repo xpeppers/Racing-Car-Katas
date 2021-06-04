@@ -13,13 +13,18 @@ namespace TDDMicroExercises.TirePressureMonitoringSystem
 
         public void Check()
         {
-            double psiPressureValue = _sensor.PopNextPressurePsiValue();
+            double psiPressureValue = GetPressure();
 
             if (psiPressureValue < LowPressureThreshold || HighPressureThreshold < psiPressureValue)
             {
                 _alarmOn = true;
                 _alarmCount += 1;
             }
+        }
+
+        protected virtual double GetPressure()
+        {
+            return _sensor.PopNextPressurePsiValue();
         }
 
         public bool AlarmOn
