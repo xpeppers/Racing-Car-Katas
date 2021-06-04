@@ -2,13 +2,16 @@
 using Xunit;
 namespace TDDMicroExercises.UnicodeFileToHtmlTextConverter
 {
-    public class HikerTest
+    public class UnicodeFileToHtmlTextConverterTest
     {
         [Fact]
-        public void Foobar()
+        public void CheckInputFileName()
         {
             UnicodeFileToHtmlTextConverter converter = new UnicodeFileToHtmlTextConverter("foobar.txt");
-            Assert.Equal("fixme", converter.GetFilename());
+            Assert.Equal("foobar.txt", converter.GetFilename());
         }
+
+
+
     }
 }
